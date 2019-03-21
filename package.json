@@ -20,6 +20,9 @@
     "url": "https://github.com/dinarname/project-lvl1-s466/issues"
   },
   "homepage": "https://github.com/dinarname/project-lvl1-s466#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
@@ -35,8 +38,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "readline-sync": "^1.4.9"
-  }
+  ]
 }
