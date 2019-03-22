@@ -1,41 +1,17 @@
 import readlineSync from 'readline-sync';
 
+
 const getToKnow = () => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hi, ${name}!`);
   return name;
 };
 
-const getRandom = max => Math.floor(Math.random() * max);
 
-const isPlayerWin = () => {
-  for (let i = 0; i < 3; i += 1) {
-    const num = getRandom(100);
-    const mod = num % 2;
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-    console.log(`Question: ${num}`);
-    const userAnswer = readlineSync.question('Your answer: ');
 
-    if (mod === 0) {
-      if (userAnswer === 'yes') {
-        console.log('Correct!');
-      } else {
-        console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' yes '.`);
-        return false;
-      }
-    }
-
-    if (mod !== 0) {
-      if (userAnswer === 'no') {
-        console.log('Correct!');
-      } else {
-        console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' no '.`);
-        return false;
-      }
-    }
-  }
-  return true;
-};
+const isEven = number => number % 2 === 0;
 
 
 const evenNumberGame = () => {
@@ -44,10 +20,34 @@ const evenNumberGame = () => {
 
   const name = getToKnow();
 
-  if (isPlayerWin()) {
-    console.log(`Congratulations, ${name}!`);
-  } else {
-    console.log(`Let's try again, ${name}!`);
+  for (let i = 0; i < 3; i += 1) {
+    const number = getRandom(0, 100);
+    console.log(`Question: ${number}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (isEven(number)) {
+      if (userAnswer === 'yes') {
+        console.log('Correct!');
+      } else {
+        console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' yes '.`);
+        console.log(`Let's try again, ${name}!`);
+        break;
+      }
+    }
+
+    if (!isEven(number)) {
+      if (userAnswer === 'no') {
+        console.log('Correct!');
+      } else {
+        console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' no '.`);
+        console.log(`Let's try again, ${name}!`);
+        break;
+      }
+    }
+
+    if (i === 2) {
+      console.log(`Congratulations, ${name}!`);
+    }
   }
 };
 
