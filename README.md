@@ -13,4 +13,4 @@ Game «Calculation» `<brain-calc>`
 
 ## terminal screencast
 
-<script id="asciicast-ssGSws6cvYPh83FIBufwjODBA" src="https://asciinema.org/a/ssGSws6cvYPh83FIBufwjODBA.js" async></script>
+[![asciicast](https://asciinema.org/a/ssGSws6cvYPh83FIBufwjODBA.svg)](https://asciinema.org/a/ssGSws6cvYPh83FIBufwjODBA)
