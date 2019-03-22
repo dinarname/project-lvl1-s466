@@ -5,11 +5,12 @@
 [![Build Status](https://travis-ci.org/dinarname/project-lvl1-s466.svg?branch=master)](https://travis-ci.org/dinarname/project-lvl1-s466)
 
 ## setup
-npm install -g braingames-dinar
+`<npm install -g braingames-dinar>`
 
 ## run
-brain-even
+Game «Even number» `<brain-even>`
+Game «Calculation» `<brain-calc>`
 
 ## terminal screencast
 
-[![asciicast](https://asciinema.org/a/lwVhnhmEZ9fQLEossZHu7NBMw.svg)](https://asciinema.org/a/lwVhnhmEZ9fQLEossZHu7NBMw)
+<script id="asciicast-ssGSws6cvYPh83FIBufwjODBA" src="https://asciinema.org/a/ssGSws6cvYPh83FIBufwjODBA.js" async></script>
