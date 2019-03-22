@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import getToKnow from '..';
+import {getToKnow} from '..';
 
 getToKnow();
