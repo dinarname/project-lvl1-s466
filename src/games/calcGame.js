@@ -1,14 +1,16 @@
-import { getToKnow, getRandom } from '..';
-import readlineSync from 'readline-sync';
-
+import {
+  NUMBER_OF_ROUNDS, greetPlayer, announceRules, announceWin, checkUserAnswer,
+  askQuestion, getToKnow, getRandom,
+} from '..';
 
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('What is the result of the expression?');
+  greetPlayer();
+  announceRules('What is the result of the expression?');
 
-  const name = getToKnow();
+  const userName = getToKnow();
+  let isUserAnswerRight = 'not defined yet :)';
 
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < NUMBER_OF_ROUNDS; i += 1) {
     const x = getRandom(0, 100);
     const y = getRandom(0, 100);
 
@@ -27,19 +29,11 @@ export default () => {
       result = x * y;
     }
 
-    console.log(`Question: ${x} ${arithmeticSign} ${y}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+    let userAnswer = askQuestion(`Question: ${x} ${arithmeticSign} ${y}`);
+    userAnswer = Number(userAnswer);
+    isUserAnswerRight = checkUserAnswer(userName, userAnswer, result);
 
-    if (result === Number(userAnswer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`' ${userAnswer} ' is wrong answer :(. Correct answer was ${result}`);
-      console.log(`Let's try again, ${name}!`);
-      break;
-    }
-
-    if (i === 2) {
-      console.log(`Congratulations, ${name}!`);
-    }
+    if (!isUserAnswerRight) break;
+    if (i === NUMBER_OF_ROUNDS - 1) announceWin(userName);
   }
 };

@@ -1,39 +1,35 @@
-import { getToKnow, getRandom, isEven } from '..';
-import readlineSync from 'readline-sync';
+import {
+  NUMBER_OF_ROUNDS, greetPlayer, announceRules, announceWin, checkUserAnswer,
+  askQuestion, getToKnow, getRandom, isEven,
+} from '..';
 
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('Answer "yes" if number even otherwise answer "no".');
+  greetPlayer();
+  announceRules('Answer "yes" if number even otherwise answer "no".');
+  const userName = getToKnow();
+  let isUserAnswerRight = 'not defined yet :)';
 
-  const name = getToKnow();
-
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < NUMBER_OF_ROUNDS; i += 1) {
     const number = getRandom(0, 100);
-    console.log(`Question: ${number}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+    const userAnswer = askQuestion(`Question: ${number}`);
+
+    // Ошибка при использовании тернарного оператора.
+    // Оставил вариант с if
+    // https://eslint.org/docs/rules/no-unused-expressions
+    // isEven(number) ? (
+    //   isUserAnswerRight = checkUserAnswer(userName, userAnswer, 'yes')
+    // ) : (
+    //   isUserAnswerRight = checkUserAnswer(userName, userAnswer, 'no')
+    // );
 
     if (isEven(number)) {
-      if (userAnswer === 'yes') {
-        console.log('Correct!');
-      } else {
-        console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' yes '.`);
-        console.log(`Let's try again, ${name}!`);
-        break;
-      }
+      isUserAnswerRight = checkUserAnswer(userName, userAnswer, 'yes');
+    } else {
+      isUserAnswerRight = checkUserAnswer(userName, userAnswer, 'no');
     }
 
-    if (!isEven(number)) {
-      if (userAnswer === 'no') {
-        console.log('Correct!');
-      } else {
-        console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' no '.`);
-        console.log(`Let's try again, ${name}!`);
-        break;
-      }
-    }
+    if (!isUserAnswerRight) break;
 
-    if (i === 2) {
-      console.log(`Congratulations, ${name}!`);
-    }
+    if (i === NUMBER_OF_ROUNDS - 1) announceWin(userName);
   }
 };
