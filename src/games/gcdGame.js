@@ -5,7 +5,7 @@ import {
 
 const gcd = (x, y) => {
   while (x !== y) {
-    x > y ? x -= y : y -= x
+    x > y ? x -= y : y -= x;
   }
   return x;
 };
