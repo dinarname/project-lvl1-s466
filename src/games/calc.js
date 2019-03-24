@@ -9,15 +9,15 @@ const makeGameData = () => {
   const b = getRandom(0, 100);
 
   const storage = [
-    (x, y) => ({ answer: x + y, question: `${x} + ${y}` }),
-    (x, y) => ({ answer: x - y, question: `${x} - ${y}` }),
-    (x, y) => ({ answer: x * y, question: `${x} * ${y}` }),
+    (x, y) => ({ answer: String(x + y), question: `${x} + ${y}` }),
+    (x, y) => ({ answer: String(x - y), question: `${x} - ${y}` }),
+    (x, y) => ({ answer: String(x * y), question: `${x} * ${y}` }),
   ];
 
   const gameData = storage[getRandom(0, storage.length - 1)](a, b);
   const { question, answer } = gameData;
 
-  return cons(question, String(answer));
+  return cons(question, answer);
 };
 
 export default () => {
