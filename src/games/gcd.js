@@ -17,7 +17,7 @@ const findGcd = (x, y) => {
   return a;
 };
 
-const makeQuestionAndAnswer = () => {
+const makeGameData = () => {
   const x = getRandom(0, 100);
   const y = getRandom(0, 100);
   const question = `${x} ${y}`;
@@ -27,5 +27,5 @@ const makeQuestionAndAnswer = () => {
 };
 
 export default () => {
-  gameEngine(description, makeQuestionAndAnswer);
+  gameEngine(description, makeGameData);
 };

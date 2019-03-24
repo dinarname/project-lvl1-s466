@@ -5,7 +5,7 @@ import { cons } from 'hexlet-pairs';
 const description = 'What number is missing in the progression?';
 const length = 10;
 
-const makeQuestionAndAnswer = () => {
+const makeGameData = () => {
   const firstElement = getRandom(0, 100);
   const step = getRandom(0, 100);
   const positionOfHidenElement = getRandom(0, length - 1);
@@ -28,5 +28,5 @@ const makeQuestionAndAnswer = () => {
 };
 
 export default () => {
-  gameEngine(description, makeQuestionAndAnswer);
+  gameEngine(description, makeGameData);
 };

@@ -3,9 +3,8 @@ import getRandom from '../utils';
 import { cons } from 'hexlet-pairs';
 
 const description = 'What is the result of the expression?';
-// const signs = '+-*';
 
-const makeQuestionAndAnswer = () => {
+const makeGameData = () => {
   const a = getRandom(0, 100);
   const b = getRandom(0, 100);
 
@@ -15,13 +14,12 @@ const makeQuestionAndAnswer = () => {
     (x, y) => ({ answer: x * y, question: `${x} * ${y}` }),
   ];
 
-  const sign = storage[getRandom(0, storage.length - 1)](a, b);
-  const { question } = sign; // Не очень понял как это работает
-  const { answer } = sign; // так сделал Eslint
+  const gameData = storage[getRandom(0, storage.length - 1)](a, b);
+  const { question, answer } = gameData;
 
   return cons(question, String(answer));
 };
 
 export default () => {
-  gameEngine(description, makeQuestionAndAnswer);
+  gameEngine(description, makeGameData);
 };
