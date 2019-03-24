@@ -1,23 +1,27 @@
 import gameEngine from '..';
-import getRandom from './utils';
+import getRandom from '../utils';
 import { cons } from 'hexlet-pairs';
 
 const description = 'What is the result of the expression?';
+// const signs = '+-*';
 
-const questionAndAnswer = () => {
-  const x = getRandom(0, 100);
-  const y = getRandom(0, 100);
+const makeQuestionAndAnswer = () => {
+  const a = getRandom(0, 100);
+  const b = getRandom(0, 100);
 
-  const allArithmeticSigns = '+-*';
-  const index = getRandom(0, allArithmeticSigns.length - 1);
-  const arithmeticSign = allArithmeticSigns[index];
+  const storage = [
+    (x, y) => ({ answer: x + y, question: `${x} + ${y}` }),
+    (x, y) => ({ answer: x - y, question: `${x} - ${y}` }),
+    (x, y) => ({ answer: x * y, question: `${x} * ${y}` }),
+  ];
 
-  const question = `${x} ${arithmeticSign} ${y}`;
-  const answer = String(eval(question));
+  const sign = storage[getRandom(0, storage.length - 1)](a, b);
+  const { question } = sign; // Не очень понял как это работает
+  const { answer } = sign; // так сделал Eslint
 
-  return cons(question, answer);
+  return cons(question, String(answer));
 };
 
 export default () => {
-  gameEngine(description, questionAndAnswer);
+  gameEngine(description, makeQuestionAndAnswer);
 };
