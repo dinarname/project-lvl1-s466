@@ -1,7 +1,8 @@
 import gameEngine from '..';
 import getRandom from './utils';
+import { cons } from 'hexlet-pairs';
 
-const rules = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
 const gcd = (x, y) => {
   while (x !== y) {
@@ -10,21 +11,15 @@ const gcd = (x, y) => {
   return x;
 };
 
-const question = () => {
+const questionAndAnswer = () => {
   const x = getRandom(0, 100);
   const y = getRandom(0, 100);
+  const question = `${x} ${y}`;
+  const answer = String(gcd(x, y));
 
-  return `${x} ${y}`;
-};
-
-const rightAnswer = (string) => {
-  const numbers = string.split(' ');
-  const x = numbers[0];
-  const y = numbers[1];
-
-  return gcd(x, y);
+  return cons(question, answer);
 };
 
 export default () => {
-  gameEngine(rules, question, rightAnswer);
+  gameEngine(description, questionAndAnswer);
 };

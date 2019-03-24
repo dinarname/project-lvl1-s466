@@ -1,49 +1,29 @@
 import gameEngine from '..';
 import getRandom from './utils';
+import { cons } from 'hexlet-pairs';
 
-const rules = 'What number is missing in the progression?';
-const progressionLength = 10;
+const description = 'What number is missing in the progression?';
+const noOfElements = 10;
 
-const question = () => {
-  let firstNumber = getRandom(0, 100);
-  const progressionStep = getRandom(0, 100);
-  const positionOfHidenNumber = getRandom(0, progressionLength - 1);
-  const progression = [];
+const questionAndAnswer = () => {
+  const firstElement = getRandom(0, 100);
+  const step = getRandom(0, 100);
+  const positionOfHidenElement = getRandom(0, noOfElements - 1);
+  let question = '';
 
-  for (let i = 0; i < progressionLength; i += 1) {
-    progression[i] = firstNumber;
-    firstNumber += progressionStep;
-  }
-
-  let progressionString = '';
-  for (let i = 0; i < progressionLength; i += 1) {
-    progressionString += i === positionOfHidenNumber ? '.. ' : `${progression[i]} `;
-  }
-
-  return progressionString;
-};
-
-const rightAnswer = (progressionString) => {
-  const numbers = progressionString.split(' ');
-  let step;
-
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (numbers[i] !== '..' && numbers[i + 1] !== '..') {
-      step = Number(numbers[i + 1]) - Number(numbers[i]);
-      break;
+  for (let i = 0; i < noOfElements; i += 1) {
+    if (i === positionOfHidenElement) {
+      question += '..  ';
+    } else {
+      question += `${firstElement + i * step}  `;
     }
   }
 
-  let answer;
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (numbers[i] === '..') {
-      answer = i === 0 ? Number(numbers[1]) - step : Number(numbers[i - 1]) + step;
-    }
-  }
+  const answer = String(firstElement + positionOfHidenElement * step);
 
-  return answer;
+  return cons(question, answer);
 };
 
 export default () => {
-  gameEngine(rules, question, rightAnswer);
+  gameEngine(description, questionAndAnswer);
 };

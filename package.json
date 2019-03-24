@@ -1,6 +1,6 @@
 {
   "name": "braingames-dinar",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "study project",
   "keywords": [
     "hexlet",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dinarname/project-lvl1-s466#readme",
   "dependencies": {
+    "hexlet-pairs": "^1.0.8",
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {

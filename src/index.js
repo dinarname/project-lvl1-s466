@@ -1,36 +1,30 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from 'hexlet-pairs';
 
 const numberOfRounds = 3;
 
-export default (rules, getQuestion, getRightAnswer) => {
+export default (description, getQuestionAndAnswer) => {
   console.log('Welcome to the Brain Games!');
-  console.log(rules);
+  console.log(description);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hi, ${userName}!`);
 
   for (let i = 0; i < numberOfRounds; i += 1) {
-    const question = getQuestion();
-    let rightAnswer = getRightAnswer(question);
+    const data = getQuestionAndAnswer();
+    const question = car(data);
+    const rightAnswer = cdr(data);
 
     console.log(`Question: ${question}`);
-    let userAnswer = readlineSync.question('Your answer: ');
-
-    // Преобразовать в число для >> if (rightAnswer === userAnswer)
-    if (!isNaN(Number(rightAnswer))) {
-      rightAnswer = Number(rightAnswer);
-      userAnswer = Number(userAnswer);
-    }
+    const userAnswer = readlineSync.question('Your answer: ');
 
     if (rightAnswer === userAnswer) {
       console.log('Correct!');
     } else {
       console.log(`' ${userAnswer} ' is wrong answer ;(. Correct answer was ' ${rightAnswer} '.`);
       console.log(`Let's try again, ${userName}!`);
-      break;
-    }
-
-    if (i === numberOfRounds - 1) {
-      console.log(`Congratulations, ${userName}!`);
+      return;
     }
   }
+
+  console.log(`Congratulations, ${userName}!`);
 };
