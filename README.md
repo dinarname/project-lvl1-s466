@@ -8,7 +8,6 @@ Here is my study project «Brain Games». In this project I practiced:
 2. Making readable js code: naming, project structure and levels of abstraction, immovable data.
 
 ```
-Project structure:
 /src
   /bin     – bin files, shebang
   /games   – make game data
