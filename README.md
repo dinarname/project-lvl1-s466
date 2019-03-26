@@ -15,7 +15,7 @@ Here is my study project «Brain Games». In this project I practiced:
   utils.js – reusable component
 ```
 
-## setup
+## Setup
 ```npm install -g braingames-dinar```
 
 [![asciicast](https://asciinema.org/a/d5meWsENpVckuQKXnmkD2PmEe.svg)](https://asciinema.org/a/d5meWsENpVckuQKXnmkD2PmEe)
