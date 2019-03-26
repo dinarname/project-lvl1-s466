@@ -4,7 +4,7 @@
 
 
 Here is my study project «Brain Games». In this project I practiced:
-1. Setting up the dev environment: node.js, babel, npm, eslint, travis-ci.
+1. Setting up the dev environment: node.js, babel, npm, eslint.
 2. Making readable js code: naming, project structure and levels of abstraction, immovable data.
 
 ```
