@@ -7,12 +7,12 @@ Here is my study project «Brain Games». In this project I practiced:
 1. Setting up the dev environment: node.js, babel, npm, eslint, travis-ci.
 2. Making readable js code: naming, project structure and levels of abstraction, immovable data.
 
-Project structure:
+```Project structure:
 /src
   /bin     – bin files, shebang
   /games   – make game data
   index.js – game engine
-  utils.js – reusable component
+  utils.js – reusable component```
 
 ## setup
 ```npm install -g braingames-dinar```
