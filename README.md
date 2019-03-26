@@ -12,7 +12,8 @@ Here is my study project «Brain Games». In this project I practiced:
   /bin     – bin files, shebang
   /games   – make game data
   index.js – game engine
-  utils.js – reusable component```
+  utils.js – reusable component
+```
 
 ## setup
 ```npm install -g braingames-dinar```
